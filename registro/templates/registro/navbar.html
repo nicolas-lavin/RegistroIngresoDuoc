@@ -1,0 +1,29 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static '/css/navbar.custom.css' %}">
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-duoc">
+    <img class="navbar-brand" src="{% static '/img/logo-duoc.png' %}" alt="logo-inicio" width="10%" height="5%">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'home' %}">Inicio <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'ingresar_registros' %}">Ingresar Registro</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'listar_registros' %}">Registros</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'mantenedor_personas' %}">Administrar Personas</a>
+          </li>
+      </ul>
+    </div>
+  <span class="welcome-msg">Bienvenido, {{request.user.first_name}} {{request.user.last_name}}</span>
+  <span><a class="btn btn-sm btn-info" href="{% url 'logout' %}">Cerrar Sesión</a></span>
+</nav>

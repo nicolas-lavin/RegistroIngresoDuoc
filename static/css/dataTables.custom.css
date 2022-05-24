@@ -1,0 +1,10 @@
+.dataTables_wrapper .dataTables_length {
+    padding-right: 1em;
+    float:left;  
+}
+.dataTables_wrapper .dt-buttons {
+    float:left; 
+}
+.dataTables_wrapper .dataTables_filter {
+    float:right; 
+}

@@ -1,0 +1,8 @@
+button a:link{
+    color: inherit;
+    text-decoration:none;
+}
+button a:visited{
+    color: inherit;
+    text-decoration:none;
+}

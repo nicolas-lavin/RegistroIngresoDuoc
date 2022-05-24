@@ -1,0 +1,38 @@
+{% extends 'registro/main_nobar.html'%}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" type="text/css" href="{% static '/css/register.css' %}">
+    <title>DUOC - Login</title>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 col-xl-9 mx-auto">
+                <div class="card card-signin flex-row my-5">
+                    <div class="card-img-left d-none d-md-flex">
+                        <!-- Background image for card set in CSS! -->
+                    </div>
+                <div class="card-body">
+                    <div class="card-title text-center">
+                        <img src="{% static '/img/logo_duocuc.png' %}" alt="logo" width="70%" height="40%">
+                    </div>                    
+                        <form class="form-signin" method="POST">
+                            {% csrf_token %}
+                            <div class="form-label-group">
+                                <input name="username" type="text" id="inputUserame" class="form-control" placeholder="Usuario..." required>
+                                <label for="inputUserame">Usuario</label>
+                            </div>
+                            <div class="form-label-group">
+                                <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Contraseña..." required>
+                                <label for="inputPassword">Contraseña</label>
+                            </div>
+                            <input class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" value="Iniciar Sesion">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

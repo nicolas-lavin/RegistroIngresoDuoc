@@ -1,0 +1,28 @@
+{%  extends 'registro/main.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card card-body">
+                <p>¿Estas seguro que quieres eliminar a "{{item.nombre}}"?</p>
+                <p class="text-warning font-weight-bold">
+                    ADVERTENCIA:
+                </p>
+                <p class="text-justify">
+                    Se eliminarán todos los registros asociados a "{{item.nombre}}", se 
+                    recomienda exportar a Excel todos los registros de la persona antes de ser eliminada.
+                </p>
+                <form action="{% url 'borrar_persona' item.rut  %}" method="POST">
+                    
+                    {% csrf_token %}
+                    <a class="btn btn-warning" href="{% url 'mantenedor_personas' %}">Cancelar</a>
+    
+                    <input class="btn btn-danger" type="submit" name="Confirm" value="Eliminar">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

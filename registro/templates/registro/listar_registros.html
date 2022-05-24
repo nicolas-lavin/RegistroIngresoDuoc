@@ -1,0 +1,65 @@
+{% extends 'registro/main.html' %}
+
+{% load static %}
+
+{% block head %}
+  <title>DUOC - Registros</title>
+  <link rel="stylesheet" type="text/css" href="{% static '/css/dataTables.bootstrap4.min.css' %}"> 
+  <link rel="stylesheet" type="text/css" href="{% static '/css/dataTables.custom.css' %}"> 
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-12 m-2">
+
+    </div>
+    <div class="col-12">
+      <table id="example" class="table table-striped table-bordered" style="width:100%">
+        <thead>
+          <tr>
+            <th>Rut</th>
+            <th>Nombre</th>
+            <th>Tipo</th>
+            <th>Fecha_registro</th>
+            <th>Hora_registro</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for i in registros %}
+            <tr>
+              <td>{{i.rut}}</td>
+              <td>{{i.rut.nombre}}</td>
+              <td>{{i.rut.tipo}}</td>
+              <td>{{i.fecha_registro}}</td>
+              <td>{{i.hora_registro}}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+        <tfoot>
+          <tr>
+            <th>Rut</th>
+            <th>Nombre</th>
+            <th>Tipo</th>
+            <th>Fecha_registro</th>
+            <th>Hora_registro</th>
+          </tr>
+        </tfoot>
+      </table>
+    </div>  
+  </div>  
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="{% static '/js/jquery.dataTables.min.js' %}"></script>
+<script src="{% static '/js/dataTables.bootstrap4.min.js' %}"></script>
+<script src="{% static '/js/dataTables.buttons.min.js' %}"></script>
+<script src="{% static '/js/jszip.min.js' %}"></script>
+<script src="{% static '/js/pdfmake.min.js' %}"></script>
+<script src="{% static '/js/vfs_fonts.js' %}"></script>
+<script src="{% static '/js/buttons.html5.min.js' %}"></script>
+<script src="{% static '/js/dataTables.custom.js' %}"></script>
+
+{% endblock %}
+

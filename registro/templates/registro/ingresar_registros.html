@@ -1,0 +1,46 @@
+{% extends 'registro/main.html'%}
+
+{% load static %}
+
+{% block head %}
+  <title>DUOC - Ingresos</title>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-md-6 col-md-offset-6">
+            <p class="pt-2 text-dark text-center font-weight-bold">
+                A CONTINUACIÓN INGRESE EL RUT DE LA PERSONA A REGISTRAR
+            </p>
+            <form action="" method="post">
+                {% csrf_token %}
+                {% for non_field_error in form.non_field_errors %}
+                    <p class="alert alert-danger">{{ non_field_error }}</p>
+                {% endfor %}
+                {% for field in form %}
+                    <div class="form-group">
+                        <!--<label for="{{ field.id_for_label }}" class="label text-capitalize">{{ field.html_name }}</label>-->
+                        {{ field }}
+                    {% for error in field.errors %}
+                        <p class="alert alert-danger">{{ error }}</p>
+                    {% endfor %}
+                    </div>
+                {% endfor %}
+                <div class="text-center">
+                    <p class="h5 pt-1 pb-1 text-info">
+                        <i class="fa fa-info-circle" aria-hidden="true"></i> Info: El rut debe estar previamente registrado en el apartado de "Administrar Personas"
+                    </p>
+                    <input type="submit" value="Guardar Ingreso" class="btn btn-primary">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="{% static '/js/jquery.rut.min.js' %}"></script>
+<script src="{% static '/js/rut.valid.js' %}"></script>
+{% endblock %}

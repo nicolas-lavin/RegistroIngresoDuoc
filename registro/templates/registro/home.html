@@ -1,0 +1,99 @@
+{% extends 'registro/main.html'%}
+
+{% load static %}
+
+{% block head %}
+    <title>DUOC - Inicio</title>
+    <link href="{% static '/css/home.css' %}" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="{% static '/css/dataTables.bootstrap4.min.css' %}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
+{% endblock %}
+
+{% block content %}
+<div id="layoutSidenav">
+    <div id="layoutSidenav_content">
+        <main>
+            <div class="container">
+                <h1 class="mt-2">Inicio</h1>
+                <ol class="breadcrumb mb-4">
+                    <li class="breadcrumb-item active">Bienvenido al sistema de registro de ingresos</li>
+                </ol>
+                <div class="row">
+                    <div class="col-xl-6">
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fas fa-chart-area mr-1"></i>
+                                Numero de Ingresos a la Semana
+                            </div>
+                            <div class="card-body"><canvas id="myAreaChart" width="100%" height="40"></canvas></div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6">
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fas fa-chart-bar mr-1"></i>
+                                Numero de Ingresos al Mes
+                            </div>
+                            <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <i class="fas fa-table mr-1"></i>
+                        Ultimos 5 Ingresos
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="inicio" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                      <th>Rut</th>
+                                      <th>Nombre</th>
+                                      <th>Cargo</th>
+                                      <th>Fecha_registro</th>
+                                      <th>Hora_registro</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    {% for i in registros %}
+                                      <tr>
+                                        <td>{{i.rut}}</td>
+                                        <td>{{i.rut.nombre}}</td>
+                                        <td>{{i.rut.cargo}}</td>
+                                        <td>{{i.fecha_registro}}</td>
+                                        <td>{{i.hora_registro}}</td>
+                                      </tr>
+                                    {% endfor %}
+                                  </tbody>
+                                  <tfoot>
+                                    <tr>
+                                      <th>Rut</th>
+                                      <th>Nombre</th>
+                                      <th>Cargo</th>
+                                      <th>Fecha_registro</th>
+                                      <th>Hora_registro</th>
+                                    </tr>
+                                  </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+{% endblock %} 
+
+{% block js%}
+<script src="{% static '/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static '/js/scripts.js' %}"></script>
+<script src="{% static '/js/Chart.min.js' %}"></script>
+
+<script src="{% static '/assets/demo/chart-area-demo.js' %}"></script>
+<script src="{% static '/assets/demo/chart-bar-demo.js' %}"></script>
+
+<script src="{% static '/js/jquery.dataTables.min.js' %}"></script>
+<script src="{% static '/js/dataTables.bootstrap4.min.js' %}"></script>
+<script src="{% static '/js/dataTables.custom.js' %}"></script>
+{% endblock %}
